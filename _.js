@@ -131,16 +131,31 @@ const _ = {
     },
     chunk(array, size) {
         if (size === undefined) size = 1;
-        const chunkedArray = [];
-        while (array.length > 0) {
-            const chunk = [];
-            for (let i = 0 ; i < size ; i++) {
-                chunk[i] = array.shift();
-                if (array.length === 0) break;
-            }
-            chunkedArray.push(chunk);
+        const arrayChunks = [];
+        for (let i = 0 ; i < array.length ; i+=size) {
+            const arrayChunk = array.slice(i, i + size);
+            arrayChunks.push(arrayChunk);
         }
-        return chunkedArray;
+        return arrayChunks;
+        // alternative solution below (all other lines on the method must be commented)
+        // we check if size is undefined, if it is 1 is asigned
+//        if (size === undefined) size = 1;
+        // array where the result will be stored
+//        const chunkedArray = [];
+        // while loop to cycle as long as there are still values on the received array
+//        while (array.length > 0) {
+            // variable where the small chunk is stored
+//            const chunk = [];
+            // for loop which stores received size values from received array to chunk one by one 
+//            for (let i = 0 ; i < size ; i++) {
+//                chunk[i] = array.shift();
+                // if all the values from received array are used we can exit the loop
+//                if (array.length === 0) break;
+//            }
+            // chunk mini array is pushed to array where the result is stored
+//            chunkedArray.push(chunk);
+//        }
+//        return chunkedArray;
     }
 }
 
